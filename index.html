@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Ulang Tahun</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #d821df, #c93b36);
+      background-size: 200% 200%;
+      animation: gradientAnimation 10s ease infinite;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    #letter-container {
+      max-width: 600px;
+      background: #f7b6ec;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      text-align:center;
+      position: relative;
+      overflow: hidden;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    #letter-content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 1s, transform 1s;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #ff0066;
+    }
+
+    #message {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    #birthday-card {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 400px;
+    }
+
+    .heart-emoji {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      transform-origin: 50% 50%;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    #text-dark {
+        font-style: oblique;
+        text-decoration-color: #ff0066;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="letter-container" class="container mt-5" onclick="bukaSurat()">
+    <div id="letter-content">
+      <img src="ds.png" alt="Surat" class="img-fluid mb-4">
+      <p id="message" class="text-dark">Semoga hari ulang tahunmu penuh kebahagiaan!</p>
+      <p class="text-dark">Dengan penuh cinta, <br> Rusdi ngawi</p>
+    </div>
+    <img id="birthday-card" src="sa.jpg" alt="Birthday Card" class="img-fluid rounded">
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function bukaSurat() {
+      var letterContent = document.getElementById('letter-content');
+      var birthdayCard = document.getElementById('birthday-card');
+
+      letterContent.style.opacity = '0';
+      letterContent.style.transform = 'translateY(-20px)';
+
+      birthdayCard.style.display = 'block';
+    }
+
+    function createHeartEmoji() {
+      var heartEmoji = document.createElement('div');
+      heartEmoji.classList.add('heart-emoji');
+      heartEmoji.innerHTML = '❤️';
+      document.body.appendChild(heartEmoji);
+
+      var xPos = Math.random() * window.innerWidth;
+      var yPos = Math.random() * window.innerHeight;
+      heartEmoji.style.left = xPos + 'px';
+      heartEmoji.style.top = yPos + 'px';
+
+      setTimeout(function() {
+        heartEmoji.remove();
+      }, 1500);
+    }
+
+    setInterval(createHeartEmoji, 500);
+  </script>
+</body>
+</html>
